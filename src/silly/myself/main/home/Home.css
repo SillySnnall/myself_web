@@ -1,0 +1,7 @@
+.home{
+    width:100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    flex-direction:column
+}
