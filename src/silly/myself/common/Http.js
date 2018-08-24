@@ -22,7 +22,7 @@ export function Http_Post(param, successCall, errorCall) {
     params.append("timestamps", timestamp);
     return axios.post(global.constants.SERVICE_URL, params)
         .then(function (response) {
-            successCall(Decrypt(response.data, global.constants.key))
+            successCall(JSON.parse(Decrypt(response.data, global.constants.key)))
         }).catch(function (error) {
             errorCall(error)
         })

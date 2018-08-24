@@ -39,12 +39,17 @@ export default class Login extends Component {
 
     // 登录请求
     _loginRequest() {
-        Http_Post(Params_login(),
+        Http_Post(Params_login(this.state.account,this.state.pwd),
             function (succsee) {
-                console.log(succsee);
+            console.log(succsee);
+                if (succsee.msg === 0) {
+                    alert(succsee.data);
+                } else {
+                    alert(succsee.param);
+                }
             },
             function (error) {
-                console.log(error);
+                alert(error);
             });
     }
 
