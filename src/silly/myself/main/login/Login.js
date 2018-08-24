@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import './Login.css';
 import '../../common/Config'
+import {Http_Post} from "../../common/Http";
+import {Params_login} from "../../common/Params";
 
-const axios = require('axios');
 /**
  * 登录
  */
@@ -38,20 +39,13 @@ export default class Login extends Component {
 
     // 登录请求
     _loginRequest() {
-        axios.post(global.constants.SERVICE_URL, {
-            ac: 'login',
-            lastName: 'xxxx',
-        }, {
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
+        Http_Post(Params_login(),
+            function (succsee) {
+                console.log(succsee);
             },
-
-        }).then(function (response) {
-            console.log(response);
-        }).catch(function (error) {
-            console.log(error);
-        });
+            function (error) {
+                console.log(error);
+            });
     }
 
     render() {
