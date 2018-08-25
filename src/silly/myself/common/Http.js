@@ -22,7 +22,8 @@ export function Http_Post(param, successCall, errorCall) {
     params.append("timestamps", timestamp);
     return axios.post(global.constants.SERVICE_URL, params)
         .then(function (response) {
-            successCall(JSON.parse(Decrypt(response.data, global.constants.key)))
+            let decrypt = Decrypt(response.data, global.constants.key);
+            successCall(JSON.parse(decrypt))
         }).catch(function (error) {
             errorCall(error)
         })

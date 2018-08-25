@@ -18,7 +18,7 @@
   },
   "proxy": {
     "/app": {
-      "target": "http://192.168.100.96:80",
+      "target": "http://localhost:8080",
       "changeOrigin": true
     }
   }
