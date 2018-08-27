@@ -38,12 +38,13 @@ export default class Login extends Component {
     }
 
     // 登录请求
-    _loginRequest() {
-        Http_Post(Params_login(this.state.account,this.state.pwd),
+    _loginRequest(props) {
+        Http_Post(Params_login(this.state.account, this.state.pwd),
             function (succsee) {
-            console.log(succsee);
+                console.log(succsee);
                 if (succsee.msg === 0) {
-                    alert(succsee.data);
+                    // 登录成功,跳转
+                    props.history.push({pathname: '/writer', state: {account: succsee.data.account}});
                 } else {
                     alert(succsee.param);
                 }
@@ -60,7 +61,7 @@ export default class Login extends Component {
                     <p>帐号: <input type="text" onChange={this._accountHandleChange}/></p>
                     <p>密码: <input type="text" onChange={this._pwdHandleChange}/></p>
                     <p>{this.state.account}</p>
-                    <button onClick={() => this._loginRequest()}>登录</button>
+                    <button onClick={() => this._loginRequest(this.props)}>登录</button>
                 </div>
             </div>
         );

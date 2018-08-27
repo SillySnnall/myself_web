@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import Home from "./silly/myself/main/home/Home";
 import Login from "./silly/myself/main/login/Login";
+import Writer from "./silly/myself/main/writer/Writer";
 
 class App extends Component {
     render() {
@@ -14,6 +15,7 @@ class App extends Component {
                 <div>
                     <Route exact path="/" component={Home}/>
                     <Route path="/login" component={Login}/>
+                    <Route path="/writer" component={Writer}/>
                 </div>
             </Router>
         );
